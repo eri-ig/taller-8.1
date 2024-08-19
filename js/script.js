@@ -19,3 +19,12 @@ function showData(dataArray) {
 }
 
 // Escribe el código necesario para realizar el fetch al archivo con los datos y mostrar los estudiantes con la función showData
+
+fetch(DATA_URL)//descarga un recurso web(una URL) pero toma tiempo en descargar.
+.then(respuesta => respuesta.json())// el then agrega un listener para cuando el recurso se termine de descargar se lo pasa como parametro a la funcion del lambda
+.then(jsonObtenido =>// en dsta se pasa el json de la llamada anterior como parametro y le aplica la funcion que esta en el lambda.
+  showData(jsonObtenido.students)
+)
+.catch(error =>
+  container.innerHTML += ' <p>Ocurrio un error al cargar el Fetch: '+error+'</p>'
+);
